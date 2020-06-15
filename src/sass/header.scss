@@ -1,0 +1,50 @@
+
+.nav-toggle{
+    margin-top: 5px;
+    &  div{
+        margin-bottom: 5px;
+        width: 30px;
+        border-bottom: 3px solid black;
+        border-radius: 20%;
+    }
+}
+
+.hide{
+    display: none;
+}
+
+.header{
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    position: relative;
+
+    .brand{
+
+    }
+
+    .nav{
+
+        .nav-menu{
+            position: absolute;
+            background: $primary-color-dark;
+            color: white;
+            padding: 1rem 2rem;
+            top: 6rem;
+            left: 5%;
+            width: 90%;
+            border-radius: 5px;
+            text-align: center;
+
+            .nav-listing{
+                list-style-type: none;
+
+                .nav-item{
+                    font-weight: 700;
+                    margin: 2rem;
+                }
+            }
+        }
+    }
+}
