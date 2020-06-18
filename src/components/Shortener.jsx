@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const Shortener = (props) => {
   const [input, setInput] = useState("");
-  const [links, setLinks] = useState([]);
   const [showError, setShowError] = useState(false);
+  const copyRef = useRef(null);
 
   const inputHandler = (e) => setInput(e.target.value);
+
+  const copyHandler = () => {
+    copyRef.current.select();
+    document.execCommand("copy");
+    console.log('copied', copyRef.current.value)
+  };
 
   const onSubmitHandler = async (e, url) => {
     e.preventDefault();
@@ -28,20 +34,34 @@ const Shortener = (props) => {
       const data = await result.json();
 
       if (data.hashid) {
-        let newLinks = [...links];
-        if(links.map(link => link.id).indexOf(data.hashid) > -1){
-          newLinks = links.filter(link => link.id !== data.hashid);
-        }
-        setLinks((links) => [
-          {
+        // checking if browser supports localStorage
+        if (typeof window.Storage !== undefined) {
+          const link = {
             id: data.hashid,
-            link: `https://rel.ink/${data.hashid}`,
+            url: `https://rel.ink/${data.hashid}`,
             input,
-          },
-          ...newLinks,
-        ])
+          };
+
+          let links = JSON.parse(localStorage.getItem("links"));
+          if (!links) {
+            localStorage.setItem("links", JSON.stringify([]));
+          } else {
+            // removing item if it already exist
+            const exist =
+              links.map((link) => link.id).indexOf(data.hashid) > -1;
+            if (exist) {
+              links = links.filter((link) => link.id !== data.hashid);
+            }
+          }
+
+          links.unshift(link);
+          localStorage.setItem("links", JSON.stringify(links));
+        } else {
+          console.log("localstorage not supported by the browser");
+        }
+
+        setInput("");
       }
-      setInput('');
     }
   };
 
@@ -66,15 +86,25 @@ const Shortener = (props) => {
           </button>
         </form>
       </div>
-      {links.length > 0 &&
-        links.map((link) => (
+
+      {localStorage.getItem("links") &&
+        JSON.parse(localStorage.getItem("links")).map((link) => (
           <div className="shortener-result" key={link.id}>
             <div className="input-url">{link.input}</div>
             <div className="result">
-              <a href={link.link} target="_blank" rel="noopener noreferrer">
-                {link.link}
+              <a href={link.url} target="_blank" rel="noopener noreferrer">
+                {link.url}
               </a>
-              <button className="btn btn-primary">Copy</button>
+              <input
+                type="text"
+                value={link.url}
+                ref={copyRef}
+                style={{ visibility: "hidden", display: "none" }}
+                readOnly
+              />
+              <button className="btn btn-primary" onClick={copyHandler}>
+                Copy
+              </button>
             </div>
           </div>
         ))}
