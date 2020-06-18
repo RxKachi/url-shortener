@@ -8,10 +8,13 @@
 }
 
 body{
-    // background-color: $neutral-gray;
+    background-color: #F0F1F7;
+    // background: green;
     font-size: $font-size;
     font-family: $font-family;
 }
 @import './reusables';
 @import './nav';
 @import './hero';
+@import './header';
+@import './shortener';

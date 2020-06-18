@@ -1,0 +1,64 @@
+.shortener {
+    position: relative;
+    padding-top: 6rem;
+    // background: $primary-color-dark;
+    
+
+    .shortener-input{
+        position: absolute;
+        background: $primary-color-dark url(../img/bg-shorten-mobile.svg) no-repeat;
+        background-position: 100% 0;
+        padding: 1.5rem;
+        margin: 5%;
+        width: 90%;
+        top: -6rem;
+        border-radius: 0.6rem;
+
+        .textInput{
+            width: 100%;
+            padding: 1rem;
+            font-size: $font-size;
+            border-radius: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        & button {
+            border-radius: 0.4rem;
+            width: 100%;
+        }
+    }
+
+    .shortener-result{
+        background:white;
+        width: 100%;
+        font-size: $font-size;
+        margin: 5%;
+        width: 90%;
+        border-radius: 0.4rem;
+        box-shadow: 0 0 0 0.1px $neutral-gray;
+
+        .input-url{
+            padding: 0.6rem 1.5rem;
+            width: 100%;
+            border-bottom: 0.1px solid $neutral-gray;
+        }
+
+        .result{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0.6rem 1.5rem;
+
+            & > a{
+                color: $primary-color-light;
+                text-decoration: none;
+                margin-bottom: 0.5rem;
+            }
+
+            & > button{
+                border-radius: 0.4rem;
+                width: 100%;
+            }
+        }
+    }
+}

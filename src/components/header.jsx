@@ -1,9 +1,9 @@
 import React from 'react';
-import Nav from './layouts/nav';
+import Nav from './layouts/Nav';
 import Hero from './layouts/Hero';
 
 const Header = props => 
-    <div>
+    <div className='header'>
         <Nav />
         <Hero />
     </div>
