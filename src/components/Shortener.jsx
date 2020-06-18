@@ -45,16 +45,17 @@ const Shortener = (props) => {
           let links = JSON.parse(localStorage.getItem("links"));
           if (!links) {
             localStorage.setItem("links", JSON.stringify([]));
+            links = JSON.parse(localStorage.getItem('links'));
+            links.push(link);
           } else {
             // removing item if it already exist
             const exist =
               links.map((link) => link.id).indexOf(data.hashid) > -1;
             if (exist) {
               links = links.filter((link) => link.id !== data.hashid);
+              links.unshift(link);
             }
           }
-
-          links.unshift(link);
           localStorage.setItem("links", JSON.stringify(links));
         } else {
           console.log("localstorage not supported by the browser");
