@@ -29,10 +29,6 @@
             margin: 5%;
             margin-top: 4rem; 
 
-            & :not(:last-child) {
-                margin-bottom: 5rem;
-            }
-
 
             .feature-item{
                 position: relative;
@@ -46,6 +42,7 @@
                 text-align: center;
                 align-items: center;
                 font-size: 1rem;
+                margin-bottom: 5rem;
 
                 .icon-wrapper{
                     background: $primary-color-dark;
@@ -60,6 +57,9 @@
                 & > p {
                     margin-top: 0;
                 }
+            }
+            & :last-child{
+                margin-bottom: 0;
             }
         }
 

@@ -4,6 +4,11 @@
     font-family: $font-family;
     outline: none;
     border: none;
+
+    & > a {
+        text-decoration: none;
+        color: white;
+    }
 }
 
 .btn-primary{

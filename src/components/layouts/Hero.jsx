@@ -1,5 +1,6 @@
 import React from "react";
 import { HeroImg } from "../../img";
+import Button from "./Button";
 
 const Hero = () => {
   return (
@@ -14,7 +15,7 @@ const Hero = () => {
           links are performing
         </p>
         <div>
-            <button className='btn btn-primary'>Get Started</button>
+            <Button link='#!'>Get Started</Button>
         </div>
       </div>
     </div>
