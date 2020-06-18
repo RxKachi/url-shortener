@@ -1,0 +1,51 @@
+.footer{
+    width: 100%;
+    background: $neutral-violet;
+    color: white;
+    display: flex;
+    padding: 4rem 2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+
+    & path {
+        fill: white;
+    }
+
+    .link-listing{
+        margin-top: 2rem;
+
+        .links{
+
+            .link{
+                list-style-type: none;
+
+                & > a{
+                    text-decoration: none;
+                    font-size: 1rem;
+                    color: $neutral-gray;
+                }
+            }
+        }
+    }
+
+    .socials{
+        margin-top: 2rem;
+        width:50%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.attribution{
+    font-size: 1rem;
+    color: $neutral-gray;
+    margin-top: 3rem;
+
+    & > a{
+        text-decoration: none;
+        color: white;
+    }
+}

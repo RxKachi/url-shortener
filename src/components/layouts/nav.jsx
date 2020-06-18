@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import {Logo} from '../../img';
+import Logo from "./Logo";
+
 
 const Nav = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
     <header className="header-top">
-      <div className="brand">
-          <img src={Logo} alt=""/>
-      </div>
+      <Logo />
       <nav className="nav">
         <div className="nav-toggle" onClick={() => setShowMenu(!showMenu)}>
           <div></div>
