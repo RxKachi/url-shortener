@@ -1,0 +1,25 @@
+.btn{
+    padding: 0.7rem 3rem;
+    font-size: $font-size;
+    font-family: $font-family;
+    outline: none;
+    border: none;
+}
+
+.btn-primary{
+    background: $primary-color-light;
+    border-radius: 2rem;
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 1px 0 1px $primary-color-light;
+}
+
+.heading{
+    line-height: 2.5rem;
+    margin: 1.5rem 0;
+}
+
+.paragraph{
+    margin: 1.5rem 0;
+    color:$neutral-blue
+}

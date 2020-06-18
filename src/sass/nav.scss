@@ -13,16 +13,12 @@
     display: none;
 }
 
-.header{
+.header-top{
     background: white;
     display: flex;
     justify-content: space-between;
     padding: 2rem;
     position: relative;
-
-    .brand{
-
-    }
 
     .nav{
 
@@ -37,12 +33,24 @@
             border-radius: 5px;
             text-align: center;
 
+            .right-nav{
+                border-top: 0.1px solid $neutral-grayish-violet;
+            }
+
             .nav-listing{
                 list-style-type: none;
 
+
+
                 .nav-item{
                     font-weight: 700;
-                    margin: 2rem;
+                    margin: 1.4rem 0;
+                    padding: 0.6rem;
+
+                    &:hover{
+                        background:$primary-color-light;
+                        border-radius: 2rem;
+                    }
                 }
             }
         }

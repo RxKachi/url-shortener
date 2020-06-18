@@ -1,5 +1,6 @@
 @import './variable';
 
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -7,9 +8,10 @@
 }
 
 body{
-    background-color: $neutral-gray;
+    // background-color: $neutral-gray;
     font-size: $font-size;
     font-family: $font-family;
 }
-
-@import './header.scss';
+@import './reusables';
+@import './nav';
+@import './hero';

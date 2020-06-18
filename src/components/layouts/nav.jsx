@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import {Logo} from '../../img';
 
-const Header = () => {
+const Nav = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <header className="header">
+    <header className="header-top">
       <div className="brand">
           <img src={Logo} alt=""/>
       </div>
@@ -18,7 +18,7 @@ const Header = () => {
           <div className={`nav-menu ${!showMenu ? 'hide' : ''}`}>
             <div className="left-nav">
               <ul className="nav-listing">
-                <li className="nav-item">Features</li>
+                <li className="nav-item" onClick={() => setShowMenu(false)}>Features</li>
                 <li className="nav-item">Pricing</li>
                 <li className="nav-item">Resources</li>
               </ul>
@@ -35,4 +35,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Nav;

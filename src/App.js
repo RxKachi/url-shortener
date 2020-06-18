@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 
-import Header from './components/layouts/Header';
 import './sass/main.scss';
-
+import Header from './components/header';
 
 const App = () => <Fragment>
     <Header />
