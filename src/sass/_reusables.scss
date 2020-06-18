@@ -23,3 +23,16 @@
     margin: 1.5rem 0;
     color:$neutral-blue
 }
+
+.invalidInput{
+    border: 2px solid rgb(235, 58, 58);
+
+}
+.invalidMsg{
+    display: block;
+    color: rgb(235, 58, 58);
+}
+
+.hidden{
+    display: none;
+}
