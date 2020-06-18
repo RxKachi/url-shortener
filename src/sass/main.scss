@@ -8,8 +8,8 @@
 }
 
 body{
-    background-color: #F0F1F7;
-    // background: green;
+    background-color: $primary-bg;
+    // background: $neutral-gray;
     font-size: $font-size;
     font-family: $font-family;
 }
@@ -18,3 +18,4 @@ body{
 @import './hero';
 @import './header';
 @import './shortener';
+@import './features';

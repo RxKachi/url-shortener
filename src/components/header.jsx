@@ -3,9 +3,9 @@ import Nav from './layouts/Nav';
 import Hero from './layouts/Hero';
 
 const Header = props => 
-    <div className='header'>
+    <section className='header'>
         <Nav />
         <Hero />
-    </div>
+    </section>
 
 export default Header;

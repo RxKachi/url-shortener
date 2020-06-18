@@ -28,25 +28,30 @@ const Shortener = (props) => {
       const data = await result.json();
 
       if (data.hashid) {
+        let newLinks = [...links];
+        if(links.map(link => link.id).indexOf(data.hashid) > -1){
+          newLinks = links.filter(link => link.id !== data.hashid);
+        }
         setLinks((links) => [
           {
             id: data.hashid,
             link: `https://rel.ink/${data.hashid}`,
             input,
           },
-          ...links,
-        ]);
+          ...newLinks,
+        ])
       }
+      setInput('');
     }
   };
 
   return (
-    <div className="shortener">
+    <section className="shortener">
       <div className="shortener-input">
         <form action="" onSubmit={(e) => onSubmitHandler(e, input)}>
           <div>
             <input
-              type="text"
+              type="url"
               className={`textInput ${showError ? "invalidInput" : ""}`}
               placeholder="shorten a link here..."
               value={input}
@@ -73,7 +78,7 @@ const Shortener = (props) => {
             </div>
           </div>
         ))}
-    </div>
+    </section>
   );
 };
 
