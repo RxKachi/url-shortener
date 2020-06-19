@@ -93,7 +93,7 @@ const Shortener = (props) => {
           <div className="shortener-result" key={link.id}>
             <div className="input-url">{link.input}</div>
             <div className="result">
-              <a href={link.url}>
+              <a href={link.url} target="_blank" rel="noopener noreferrer">
                 {link.url}
               </a>
               <input
