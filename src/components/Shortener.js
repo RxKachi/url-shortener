@@ -1,17 +1,28 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const Shortener = (props) => {
   const [input, setInput] = useState("");
   const [showError, setShowError] = useState(false);
-  const copyRef = useRef(null);
+  const [userLinks, setUserLinks] = useState([]);
+  const copyRef = useRef(null); 
 
   const inputHandler = (e) => setInput(e.target.value);
 
   const copyHandler = () => {
     copyRef.current.select();
     document.execCommand("copy");
-    console.log('copied', copyRef.current.value)
+    console.log("copied", copyRef.current.value);
   };
+
+  useEffect(() => {
+    const links = JSON.parse(localStorage.getItem('links'));
+    if(links){
+      setUserLinks(links);
+    }else{
+      setUserLinks([]);
+    }
+    
+  }, [setUserLinks])
 
   const onSubmitHandler = async (e, url) => {
     e.preventDefault();
@@ -34,34 +45,29 @@ const Shortener = (props) => {
       const data = await result.json();
 
       if (data.hashid) {
-        // checking if browser supports localStorage
-        if (typeof window.Storage !== undefined) {
-          const link = {
-            id: data.hashid,
-            url: `https://rel.ink/${data.hashid}`,
-            input,
-          };
+  
+        const link = {
+          id: data.hashid,
+          url: `https://rel.ink/${data.hashid}`,
+          input,
+        };
 
-          let links = JSON.parse(localStorage.getItem("links"));
-          if (!links) {
-            localStorage.setItem("links", JSON.stringify([]));
-            links = JSON.parse(localStorage.getItem('links'));
-            links.push(link);
-          } else {
-            // removing item if it already exist
-            const exist =
-              links.map((link) => link.id).indexOf(data.hashid) > -1;
-            if (exist) {
-              links = links.filter((link) => link.id !== data.hashid);
-              links.unshift(link);
-            }
-          }
-          localStorage.setItem("links", JSON.stringify(links));
-        } else {
-          console.log("localstorage not supported by the browser");
+        let newLinks = [...userLinks];
+        const exist = userLinks.map((link) => link.id).indexOf(data.hashid) > -1;
+        if (exist) {
+          newLinks = userLinks.filter((link) => link.id !== data.hashid);
+        }
+        newLinks.unshift(link);
+        setUserLinks(newLinks);
+        
+        // checking if browser supports localStorage
+        if(typeof window.Storage !== undefined){
+          localStorage.setItem('links', JSON.stringify(userLinks));
+        }else{
+          console.log('this browser does not support local storage')
         }
 
-        setInput("");
+        setInput('');
       }
     }
   };
@@ -70,7 +76,7 @@ const Shortener = (props) => {
     <section className="shortener">
       <div className="shortener-input">
         <form action="" onSubmit={(e) => onSubmitHandler(e, input)}>
-          <div>
+          <div className='input-container'>
             <input
               type="url"
               className={`textInput ${showError ? "invalidInput" : ""}`}
@@ -82,14 +88,16 @@ const Shortener = (props) => {
               Please add a valid link
             </div>
           </div>
-          <button type="submit" className="btn btn-primary">
-            Shorten it!
-          </button>
+          <div className='button-container'>
+            <button type="submit" className="btn btn-primary">
+              Shorten it!
+            </button>
+          </div>
         </form>
       </div>
 
-      {localStorage.getItem("links") &&
-        JSON.parse(localStorage.getItem("links")).map((link) => (
+      { userLinks.length > 0 &&
+        userLinks.map((link) => (
           <div className="shortener-result" key={link.id}>
             <div className="input-url">{link.input}</div>
             <div className="result">

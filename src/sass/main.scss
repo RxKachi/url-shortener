@@ -13,16 +13,16 @@ body{
     font-size: $font-size;
     font-family: $font-family;
 
-    @media screen and (min-width: 1440px){
-        background: white;
-    }
+    // @media screen and (min-width: 2000px){
+    //     background: white;
+    // }
 }
 
-@media screen and (min-width: 1440px){
-    #root{
-        width: 1440px;
-    }
-}
+// @media screen and (min-width: 1440px){
+//     #root{
+//         width: 1440px;
+//     }
+// }
 
 @media screen and (min-width: 769px){
     #root{
