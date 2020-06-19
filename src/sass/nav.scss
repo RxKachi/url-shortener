@@ -31,9 +31,12 @@
 
     @media screen and (min-width: 769px){
         position: unset;
-        width: 90%;
-        margin:0 5%;
-        padding: 1rem 0;
+        margin:0;
+        padding: 1rem 3.72rem;
+    }
+
+    @media screen and (min-width: 1000px){
+        padding: 1rem 7rem;
     }
 
     .nav{
