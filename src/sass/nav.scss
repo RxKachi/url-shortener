@@ -1,11 +1,20 @@
 
 .nav-toggle{
     margin-top: 5px;
+    padding-top: 0.6rem;
+
     &  div{
         margin-bottom: 5px;
         width: 30px;
         border-bottom: 3px solid black;
         border-radius: 20%;
+    }
+    @media screen and (min-width: 769px){
+        padding: 0;
+        &  div{
+            display: none;
+        }
+
     }
 }
 
@@ -20,7 +29,17 @@
     padding: 2rem;
     position: relative;
 
+    @media screen and (min-width: 769px){
+        position: unset;
+        width: 90%;
+        margin:0 5%;
+        padding: 1rem 0;
+    }
+
     .nav{
+        @media screen and (min-width: 769px){
+            width: 85%;
+        }
 
         .nav-menu{
             position: absolute;
@@ -33,19 +52,53 @@
             border-radius: 5px;
             text-align: center;
 
+            @media screen and (min-width: 769px){
+                position: unset;
+                background: unset;
+                color: $neutral-grayish-violet;
+                display: flex;
+                justify-content: space-between;
+                padding: 0;
+                margin: 0;
+                text-align: unset;
+                width: 100%;
+            }
+
             .right-nav{
                 border-top: 0.1px solid $neutral-grayish-violet;
+
+                @media screen and (min-width: 769px){
+                    border: unset;
+                }
             }
+
+            // .left-nav{
+            //     @media screen and (min-width: 769px){
+            //         display: flex;
+
+            //     }
+            // }
 
             .nav-listing{
                 list-style-type: none;
 
-
+                @media screen and (min-width: 769px){
+                    display: flex;
+                    padding: 0;
+                    margin: 0;
+                }
 
                 .nav-item{
                     font-weight: 700;
                     margin: 1.4rem 0;
                     padding: 0.6rem;
+
+                    @media screen and (min-width: 769px){
+                        font-size: 0.9rem;
+                        margin: 0;
+                        margin-left: 1rem;
+                        padding: 0.6rem 1rem;
+                    }
 
                     &:hover{
                         background:$primary-color-light;
