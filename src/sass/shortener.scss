@@ -3,11 +3,11 @@
     padding-top: 6rem;
 
     @media screen and (min-width: 769px){
-        padding: 6rem 7%;
+        padding: 6rem 7% 0 7%;
     }
 
     @media screen and (min-width: 1000px){
-        padding: 6rem 10%;
+        padding: 6rem 10% 0 10%;
     }
 
     .shortener-input{
@@ -25,6 +25,8 @@
             margin: 0;
             top: -4.5rem;
             padding: 2rem;
+            background-image: url(../img/bg-shorten-desktop.svg);
+            background-position: 80% 20%;
 
             & > form {
                 display: flex;

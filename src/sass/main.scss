@@ -18,11 +18,9 @@ body{
     // }
 }
 
-// @media screen and (min-width: 1440px){
-//     #root{
-//         width: 1440px;
-//     }
-// }
+#root{
+    max-width: 1600px;
+}
 
 @media screen and (min-width: 769px){
     #root{
