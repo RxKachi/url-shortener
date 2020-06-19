@@ -5,4 +5,13 @@
     padding: 5rem 2rem;
     color: white;
     text-align: center;
+    font-weight: 700;
+
+    @media screen and (min-width: 769px){
+        background-image: url(../img/bg-boost-desktop.svg);
+        
+        & > h2{
+            font-size: 300%;
+        }
+    }
 }
