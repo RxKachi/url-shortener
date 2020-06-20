@@ -77,6 +77,12 @@
         @media screen and (min-width: 769px){
             width: 100%;
             margin: 0;
+            margin-bottom: 2rem;
+        }
+
+        @media screen and (min-width: 1000px){
+            width: 100%;
+            margin: 0;
             display: flex;
             justify-content: space-between;
             align-items: center;

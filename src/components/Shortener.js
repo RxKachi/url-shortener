@@ -1,17 +1,20 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const Shortener = (props) => {
   const [input, setInput] = useState("");
   const [showError, setShowError] = useState(false);
   const [userLinks, setUserLinks] = useState([]);
-  const copyRef = useRef(null); 
+
 
   const inputHandler = (e) => setInput(e.target.value);
 
-  const copyHandler = () => {
-    copyRef.current.select();
-    document.execCommand("copy");
-    console.log("copied", copyRef.current.value);
+  const copyHandler = async(e, text) => {
+    if(!navigator.clipboard){
+      console.log('sorry, navigator clipboard not supported by browser')
+    }
+    navigator.clipboard.writeText(text);
+    e.target.innerHTML = 'copied';
+
   };
 
   useEffect(() => {
@@ -122,11 +125,10 @@ const Shortener = (props) => {
               <input
                 type="text"
                 value={link.url}
-                ref={copyRef}
                 style={{ visibility: "hidden", display: "none" }}
                 readOnly
               />
-              <button className="btn btn-primary" onClick={copyHandler}>
+              <button className="btn btn-primary" onClick={(e) => copyHandler(e, link.url)}>
                 Copy
               </button>
               <button className="btn btn-danger" onClick={() => deleteHandler(link.id)}>
