@@ -9,6 +9,52 @@
     align-items: center;
     text-align: center;
 
+    @media screen and (min-width: 1000px){
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 3% 10% 5% 10%;
+        align-items: flex-start;
+
+        .footer-links{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex: 3;
+            padding-left: 10%;
+
+            @media screen and (min-width: 1200px){
+                padding-left: 18%;
+            }
+
+            .link-listing{
+                margin: 0 1.5rem;
+                font-size: 1rem;
+                flex: 2;
+
+                & > h3{
+                    padding: 0;
+                    margin: 0;
+                    margin-bottom: 1.5rem;
+                }
+
+                & .link {
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .socials{
+                margin: 0;
+                padding-top: 0.6rem;
+                flex: 1;
+
+                & > img {
+                    padding-left: 1rem;
+                }
+                
+            }
+        }
+    }
+
 
     & path {
         fill: white;
