@@ -58,19 +58,34 @@ const Shortener = (props) => {
           newLinks = userLinks.filter((link) => link.id !== data.hashid);
         }
         newLinks.unshift(link);
-        setUserLinks(newLinks);
-        
+
         // checking if browser supports localStorage
-        if(typeof window.Storage !== undefined){
-          localStorage.setItem('links', JSON.stringify(userLinks));
+        if(typeof Storage !== undefined){
+          localStorage.setItem('links', JSON.stringify(newLinks));
         }else{
           console.log('this browser does not support local storage')
         }
+
+        setUserLinks(newLinks);
 
         setInput('');
       }
     }
   };
+
+
+  const deleteHandler = (id) => {
+    const exist = userLinks.filter(link => link.id).indexOf(id);
+    if(exist){
+      const newLinks = userLinks.filter(link => link.id !== id);
+      setUserLinks(newLinks);
+
+      if(typeof Storage !== undefined){
+        localStorage.setItem('links', JSON.stringify(newLinks));
+      }
+    }
+  }
+
 
   return (
     <section className="shortener">
@@ -113,6 +128,9 @@ const Shortener = (props) => {
               />
               <button className="btn btn-primary" onClick={copyHandler}>
                 Copy
+              </button>
+              <button className="btn btn-danger" onClick={() => deleteHandler(link.id)}>
+                Clear
               </button>
             </div>
           </div>

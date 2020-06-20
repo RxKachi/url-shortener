@@ -116,10 +116,15 @@
                 }
             }
 
-            & > button{
+            &  button{
                 border-radius: 0.4rem;
                 width: 100%;
                 margin-bottom: 1rem;
+
+                @media screen and (min-width: 769px){
+                    margin-left: 1rem;
+                }
+                
             }
         }
     }

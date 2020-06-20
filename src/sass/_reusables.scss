@@ -19,6 +19,15 @@
     box-shadow: 0 1px 0 1px $primary-color-light;
 }
 
+.btn-danger{
+    background: red;
+    border-radius: 1rem;
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 1px 0 1px $primary-color-light;
+    margin: 0 auto;
+}
+
 .heading{
     line-height: 2.5rem;
     margin: 1.5rem 0;
