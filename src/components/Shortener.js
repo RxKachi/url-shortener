@@ -44,14 +44,15 @@ const Shortener = (props) => {
         body: JSON.stringify({ url }),
       };
 
-      const result = await fetch("https://rel.ink/api/links/", config);
+      const result = await fetch(`https://api.shrtco.de/v2/shorten?url=${url}`);
+
       const data = await result.json();
 
-      if (data.hashid) {
+      if (data.result && data.result.full_short_link) {
   
         const link = {
-          id: data.hashid,
-          url: `https://rel.ink/${data.hashid}`,
+          id: data.result.code,
+          url: data.result.full_short_link,
           input,
         };
 
